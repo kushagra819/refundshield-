@@ -1,8 +1,8 @@
 # Keep the serverless bundle small — none of this is needed at runtime.
+# NOTE: frontend/src must NOT be ignored — Vercel builds the SPA from it.
 backend/tests/
 backend/tools/
 backend/.pytest_cache/
 **/__pycache__/
 docs/
-frontend/src/
 frontend/node_modules/

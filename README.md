@@ -15,9 +15,9 @@ Team: **The Anomaly Syndicate** · Problem Statement: **CX0507 — The Fraudulen
 
 | | |
 |---|---|
-| **Live demo** | _TBD — Vercel URL_ |
-| **Demo video** | _TBD — YouTube (unlisted)_ |
-| **Repository** | _this repo_ |
+| **Demo video** | https://youtu.be/H8s1m3iL7uw (unlisted — anyone with the link can view) |
+| **Repository** | https://github.com/kushagra819/refundshield- |
+| **Live demo** | _pending Vercel deploy — see **Deployment layout** below_ |
 
 The deployed site runs the **real engines**, not a mock: `/api/*` is served by the
 FastAPI application in `backend/app` running as a Vercel Python function, and the

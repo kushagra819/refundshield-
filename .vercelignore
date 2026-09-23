@@ -1,0 +1,8 @@
+# Keep the serverless bundle small — none of this is needed at runtime.
+backend/tests/
+backend/tools/
+backend/.pytest_cache/
+**/__pycache__/
+docs/
+frontend/src/
+frontend/node_modules/

@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Light: a calm, near-white workstation.
+     Dark: a deep navy security console — re-toned, not inverted. */
+  :root {
+    --c-canvas: 247 248 250;
+    --c-surface: 255 255 255;
+    --c-raised: 252 253 254;
+    --c-hairline: 224 228 236;
+    --c-ring: 46 64 89;
+    --c-fg: 14 20 32;
+    --c-fg2: 57 67 90;
+    --c-fg3: 122 133 152;
+  }
+  .dark {
+    --c-canvas: 9 13 22;
+    --c-surface: 17 23 35;
+    --c-raised: 22 30 45;
+    --c-hairline: 36 47 66;
+    --c-ring: 126 156 197;
+    --c-fg: 232 236 243;
+    --c-fg2: 178 189 206;
+    --c-fg3: 124 137 158;
+  }
+
+  * { @apply border-hairline; }
+  html, body, #root { height: 100%; }
+  body {
+    @apply bg-canvas text-fg antialiased;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'ss01';
+  }
+  ::selection { background: rgb(var(--c-ring) / 0.18); }
+
+  /* Visible focus everywhere, for keyboard users. */
+  :focus-visible {
+    outline: 2px solid rgb(var(--c-ring));
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Respect the OS setting, and the in-app toggle that mirrors it. */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+  .reduce-motion *, .reduce-motion *::before, .reduce-motion *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(var(--c-fg3) / 0.32);
+    border-radius: 6px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: rgb(var(--c-fg3) / 0.5); background-clip: content-box; }
+}
+
+@layer components {
+  .card {
+    @apply bg-surface border border-hairline rounded-xl shadow-card;
+  }
+  .card-hover {
+    @apply transition duration-200 ease-swift hover:shadow-lift hover:-translate-y-px;
+  }
+  .eyebrow {
+    @apply font-mono text-2xs font-bold uppercase tracking-[0.14em] text-fg3;
+  }
+  .mono-num { @apply font-mono tabular-nums; }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-hairline
+           bg-surface px-3.5 py-2 text-sm font-medium text-fg2 transition
+           duration-150 ease-swift hover:bg-raised hover:text-fg active:scale-[0.985]
+           disabled:opacity-50 disabled:pointer-events-none;
+  }
+  .btn-primary {
+    @apply border-transparent bg-ink text-white hover:bg-ink-soft hover:text-white;
+  }
+  .btn-danger {
+    @apply border-transparent bg-high text-white hover:bg-critical hover:text-white;
+  }
+  .skeleton {
+    @apply relative overflow-hidden rounded-md bg-hairline/60;
+  }
+  .skeleton::after {
+    content: '';
+    @apply absolute inset-0;
+    background: linear-gradient(90deg, transparent, rgb(var(--c-surface) / 0.7), transparent);
+    animation: shimmer 1.4s infinite;
+    transform: translateX(-100%);
+  }
+  .table-row {
+    @apply border-b border-hairline transition-colors duration-150
+           hover:bg-brand-tint/45 dark:hover:bg-raised cursor-pointer;
+  }
+}

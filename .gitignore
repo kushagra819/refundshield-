@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+*.egg-info/
+
+# Node
+node_modules/
+frontend/dist/
+*.tsbuildinfo
+
+# Env — .env.example is committed, real .env is not
+.env
+.env.local
+
+# Vercel
+.vercel/
+
+# OS / editor
+.DS_Store
+Thumbs.db

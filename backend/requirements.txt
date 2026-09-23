@@ -1,0 +1,12 @@
+# RefundShield backend — Round 1 prototype
+# Python 3.11+ (developed and tested on 3.14)
+
+fastapi>=0.115
+uvicorn[standard]>=0.34
+pydantic>=2.10
+numpy>=2.0
+pandas>=2.2
+networkx>=3.3
+
+# dev / verification
+pytest>=8.0
